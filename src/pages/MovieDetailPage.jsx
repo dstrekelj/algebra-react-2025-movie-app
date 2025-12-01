@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 
 export function MovieDetailPage() {
   const { id } = useParams();
@@ -17,6 +17,7 @@ export function MovieDetailPage() {
     <div>
       <h2>Movie {id}</h2>
       <p>Description for Movie {id}</p>
+      <Link to="/">Back to Movie List</Link>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 export function MovieListPage() {
   const [data, setData] = useState(null);
@@ -15,9 +16,15 @@ export function MovieListPage() {
     <div>
       <h1>Movie App</h1>
       <ul>
-        <li>Movie 1</li>
-        <li>Movie 2</li>
-        <li>Movie 3</li>
+        <li>
+          <Link to="/movies/1">Movie 1</Link>
+        </li>
+        <li>
+          <Link to="/movies/2">Movie 2</Link>
+        </li>
+        <li>
+          <Link to="/movies/3">Movie 3</Link>
+        </li>
       </ul>
     </div>
   );
