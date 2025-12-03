@@ -11,12 +11,18 @@ export function MovieDetailPage() {
       .then((data) => setData(data));
   }, [id, setData]);
 
-  console.log(data);
+  if (data === null) {
+    return <div>Loading...</div>;
+  }
+
+  const { name, image, summary, type } = data;
 
   return (
     <div>
-      <h2>Movie {id}</h2>
-      <p>Description for Movie {id}</p>
+      <h2>{name}</h2>
+      {image && <img src={image.original} alt={name} width={240} />}
+      <p>Type: {type}</p>
+      <div dangerouslySetInnerHTML={{ __html: summary }} />
       <Link to="/">Back to Movie List</Link>
     </div>
   );
