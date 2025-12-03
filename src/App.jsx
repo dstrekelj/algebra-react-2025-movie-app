@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router";
-import { MovieListPage } from "./pages/MovieListPage";
-import { MovieDetailPage } from "./pages/MovieDetailPage";
+import { SeriesListPage } from "./pages/SeriesListPage";
+import { SeriesDetailPage } from "./pages/SeriesDetailPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import "./App.css";
 
 function App() {
   return (
     <Routes>
-      <Route index element={<MovieListPage />} />
-      <Route path="/movies/:id" element={<MovieDetailPage />} />
+      <Route index element={<SeriesListPage />} />
+      <Route path="/series/:id" element={<SeriesDetailPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

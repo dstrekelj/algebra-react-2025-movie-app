@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 
-export function MovieDetailPage() {
+export function SeriesDetailPage() {
   const { id } = useParams();
   const [data, setData] = useState(null);
 
@@ -23,7 +23,7 @@ export function MovieDetailPage() {
       {image && <img src={image.original} alt={name} width={240} />}
       <p>Type: {type}</p>
       <div dangerouslySetInnerHTML={{ __html: summary }} />
-      <Link to="/">Back to Movie List</Link>
+      <Link to="/">Back to Series List</Link>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
-export function MovieListPage() {
+export function SeriesListPage() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -22,11 +22,11 @@ export function MovieListPage() {
 
   return (
     <div>
-      <h1>Movie App</h1>
+      <h1>Series App</h1>
       <ul>
         {shows.map((show) => (
           <li key={show.id}>
-            <Link to={`/movies/${show.id}`}>{show.name}</Link>
+            <Link to={`/series/${show.id}`}>{show.name}</Link>
           </li>
         ))}
       </ul>
