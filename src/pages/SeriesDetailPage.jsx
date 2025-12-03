@@ -4,15 +4,21 @@ import { Link, useParams } from "react-router";
 export function SeriesDetailPage() {
   const { id } = useParams();
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(`https://api.tvmaze.com/shows/${id}`)
       .then((response) => response.json())
-      .then((data) => setData(data));
+      .then((data) => setData(data))
+      .catch(() => setError("Failed to fetch series data"));
   }, [id, setData]);
 
-  if (data === null) {
+  if (data === null && error === null) {
     return <div>Loading...</div>;
+  }
+
+  if (error !== null) {
+    return <div>{error}</div>;
   }
 
   const { name, image, summary, type } = data;

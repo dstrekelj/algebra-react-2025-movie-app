@@ -3,16 +3,21 @@ import { Link } from "react-router";
 
 export function SeriesListPage() {
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch("https://api.tvmaze.com/schedule?country=US")
       .then((response) => response.json())
       .then((data) => setData(data))
-      .catch(() => setData([]));
+      .catch(() => setError("Failed to fetch series data"));
   }, []);
 
-  if (data === null) {
+  if (data === null && error === null) {
     return <div>Loading...</div>;
+  }
+
+  if (error !== null) {
+    return <div>{error}</div>;
   }
 
   const shows = data.map((episode) => ({
