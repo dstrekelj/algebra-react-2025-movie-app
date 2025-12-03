@@ -7,24 +7,28 @@ export function MovieListPage() {
   useEffect(() => {
     fetch("https://api.tvmaze.com/schedule?country=US")
       .then((response) => response.json())
-      .then((data) => setData(data));
+      .then((data) => setData(data))
+      .catch(() => setData([]));
   }, []);
 
-  console.log(data);
+  if (data === null) {
+    return <div>Loading...</div>;
+  }
+
+  const shows = data.map((episode) => ({
+    name: episode.show.name,
+    id: episode.show.id,
+  }));
 
   return (
     <div>
       <h1>Movie App</h1>
       <ul>
-        <li>
-          <Link to="/movies/1">Movie 1</Link>
-        </li>
-        <li>
-          <Link to="/movies/2">Movie 2</Link>
-        </li>
-        <li>
-          <Link to="/movies/3">Movie 3</Link>
-        </li>
+        {shows.map((show) => (
+          <li key={show.id}>
+            <Link to={`/movies/${show.id}`}>{show.name}</Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
